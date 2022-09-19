@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//INTEGRADO A SCRIPT MOVEMENT
+//INTEGRAR A PCONTROLLER
 public class Swimming : MonoBehaviour
 {
     //Movement Variables
