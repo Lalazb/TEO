@@ -7,16 +7,15 @@ using UnityEngine.UI;
 public class Swimming : MonoBehaviour
 {
     //Movement Variables
-    public float moveX = 5.0f;
-    public float moveY = 5.0f;
-    public float factorDown;
+    public float moveX = 5f;
+    public float moveY = 5f;
 
     //Player interactors
     private Rigidbody body;
 
     public void Update()
     {
-        body.velocity = new Vector2(moveX, 0); //hace que se mueva en X autom�ticamente
+        //body.velocity = new Vector2(moveX, 0); //hace que se mueva en X autom�ticamente
         //Debug.Log("avanza");
 
         //Move controls
