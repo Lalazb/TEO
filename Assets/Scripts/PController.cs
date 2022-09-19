@@ -32,28 +32,24 @@ public class PController : MonoBehaviour
             this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
     }
+
     //probar con ray
-    private void Update()
-    {
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
-    }
 
     void FixedUpdate()
     {
         this.FixSpriteHorizontalOrientation();
 
         float hInput = Input.GetAxis("Horizontal");
-
+        
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
       
       //revisar lineas 48-65 iniciando por jump
-        if (isGrounded)
+        if (isGrounded && Input.GetButtonDown("Jump"))
         {
             direction.y = -1;
             ableToMakeDoubleJump = true;
-            if (Input.GetButtonDown("Jump"))
-            {
-                direction.y = jumpForce;
-            }
+            direction.y = jumpForce;
+            //Debug.Log("Jump");
         }
         else
         {   
