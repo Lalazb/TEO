@@ -12,7 +12,9 @@ public class PController : MonoBehaviour
     public float dash = 100;
     public float jumpForce = 10;
     public float gravity = -20;
-    public float waterGravity = -0.01f;
+    public float moveX = 5;
+    public float moveY = 10;
+    public float waterGravity = -2;
     public Transform groundCheck;
     public LayerMask groundLayer;
     public bool isSwimming = false;
@@ -44,62 +46,87 @@ public class PController : MonoBehaviour
     //probar con ray
     void FixedUpdate()
     {
-        this.FixSpriteHorizontalOrientation();
-
         float hInput = Input.GetAxis("Horizontal");
         
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
-
-        if(isSwimming)
+        
+        if (isSwimming)
         {
-            direction.y = -1;
-
-            if (Input.GetButtonDown("Jump"))
-            {                
-                direction.y = jumpForce;
-                Debug.Log("Swim");
-            }
-
-            direction.y += waterGravity * Time.fixedDeltaTime;
-            Debug.Log("Water Gravity");
-
-            direction.x = hInput * swimSpeed;
-            controller.Move(direction * Time.fixedDeltaTime);
+            Swimming();
         }
         else
         {
-            //revisar lineas 48-65 iniciando por jump
-            if (isGrounded)
-            {
-                direction.y = -1;
-                if(Input.GetButtonDown("Jump"))
-                {
-                    ableToMakeDoubleJump = true;
-                    direction.y = jumpForce;
-                    //Debug.Log("Jump");
-                }
-            }
-            else
-            {   
-                direction.y += gravity * Time.fixedDeltaTime;
-                Debug.Log("Gravity");
-                if (ableToMakeDoubleJump & Input.GetButtonDown("Jump"))
-                {
-                    direction.y = jumpForce;
-                    ableToMakeDoubleJump = false;
-                }
-            }
+            this.FixSpriteHorizontalOrientation();
+            JumpingVer2();
+
             //Dash
-            if(Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
                 direction.x = hInput * dash;
                 controller.Move(direction * Time.fixedDeltaTime);
             }
-            else
+           
+            direction.x = hInput * speed;
+            controller.Move(direction * Time.fixedDeltaTime);
+            
+        }
+    }
+
+    void Swimming()
+    {
+        if (Input.GetButton("Jump"))
+        {
+            body.AddForce(Vector3.up * moveY, ForceMode.Impulse);
+        }
+        else
+        {
+            body.velocity = new Vector2(moveX, waterGravity);
+        }
+    }
+
+    void Jumping()
+    {
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
+        if (isGrounded)
+        {
+            direction.y = -1;
+            if (Input.GetButton("Jump"))
             {
-                direction.x = hInput * speed;
-                controller.Move(direction * Time.fixedDeltaTime);
+                ableToMakeDoubleJump = true;
+                direction.y = jumpForce;
+                //Debug.Log("Jump");
+            }
+        }
+        else //caida
+        {
+            direction.y += gravity * Time.fixedDeltaTime;
+            Debug.Log("Gravity");
+            if (ableToMakeDoubleJump & Input.GetButtonUp("Jump"))
+            {
+                direction.y = jumpForce;
+                ableToMakeDoubleJump = false;
             }
         }
     }
+
+    void JumpingVer2()
+    {
+         isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
+         if (Input.GetButton("Jump") && isGrounded)
+         {
+                direction.y = -1;
+                ableToMakeDoubleJump = true;
+                direction.y = jumpForce;        
+         }
+         else //caida
+         {
+            direction.y += gravity * Time.fixedDeltaTime;
+            if (ableToMakeDoubleJump & Input.GetButtonUp("Jump")) //Tiene ButtonUp por lo que solo en un momento muy específico puedes hacer el doble salto; cuando APENAS va a caer
+            {
+                direction.y = jumpForce;
+                ableToMakeDoubleJump = false;
+            }
+         }
+        
+    }
+
 }
