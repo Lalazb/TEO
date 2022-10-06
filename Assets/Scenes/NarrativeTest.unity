@@ -440,6 +440,10 @@ PrefabInstance:
       value: '"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
         officia deserunt mollit anim id est laborum."'
       objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4131068017491871030, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2704,7 +2708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
       propertyPath: dialogue.sentences.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
@@ -2719,6 +2723,10 @@ PrefabInstance:
       propertyPath: dialogue.sentences.Array.data[2]
       value: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
         ut aliquip ex ea commodo consequat.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: "Puedes consultar m\xE1s en el libro de Ipsum."
       objectReference: {fileID: 0}
     - target: {fileID: 4131068017491871030, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
       propertyPath: m_RootOrder
