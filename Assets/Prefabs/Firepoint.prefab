@@ -41,13 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2433020278856334794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5482c0f9e05878c4a85c4807873482a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c691fdd254ed034b9c35ab922e0ce11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 3843996491262800183, guid: 5596ca3532add2141b1ab0658c66f7b2,
-    type: 3}
+  projectile: {fileID: 8228497376648984290, guid: 28bcaabf9f13207489aff00bc4fe0192, type: 3}
   firepoint: {fileID: 2433020278856334773}
-  chargedProjectile: {fileID: 5484742623447030223, guid: 2790ae7684a6f6544906a01645172ada,
-    type: 3}
-  chargeSpeed: 2
-  chargeTime: 3
+  chargedProjectile: {fileID: 7538200301459333249, guid: 5c93a14ab67da604d8b7bec1b4819b27, type: 3}
+  chargeSpeed: 3
+  chargeTime: 2
