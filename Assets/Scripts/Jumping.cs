@@ -5,9 +5,6 @@ using UnityEngine;
 public class Jumping : MonoBehaviour
 {
     //movement Variables
-
-    public float moveSpeed;
-
     Rigidbody myRB;
 
     //jumping
@@ -38,7 +35,7 @@ public class Jumping : MonoBehaviour
         {
             grounded = false;
         }
-        if(grounded && Input.GetAxis("Jump") > 0)
+        if (grounded && Input.GetAxis("Jump") > 0)
         {
             grounded = false;
             myRB.AddForce(new Vector3(0, jump, 0));
