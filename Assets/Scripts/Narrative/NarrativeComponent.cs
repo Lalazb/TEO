@@ -5,10 +5,17 @@ using UnityEngine.UI;
 
 public class NarrativeComponent : MonoBehaviour
 {
-    public Dialogue dialogue;
-    //public AudioClip greeting;
+    [Header("Narrative Interface")]
+    public Dialogue dialogue;   
     public Text nameText, narrativeText;
     public GameObject narrativeBubble;
+
+    [Header("Interact Tutorial")]
+    public InteractTutorial interactTutorial;
+    public KeyCode interactKey = KeyCode.F;
+    
+
+    //public AudioClip greeting; 
 
     [HideInInspector]
     public bool dialogueStarted = false, playerInRangeOfDialogue = false, powerObtained = false;
@@ -21,6 +28,7 @@ public class NarrativeComponent : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            interactTutorial.StartInteractKeyBubble(interactKey);
             playerInRangeOfDialogue = true;
             //audioSource.PlayOneShot (llamada);
             //Debug.Log("Player is in dialogue range");
@@ -33,6 +41,8 @@ public class NarrativeComponent : MonoBehaviour
         {
             //Debug.Log("Player is out of dialogue range");
             EndDialogueBubble();
+            interactTutorial.interactTutorialAnimator.SetBool("StayAnim", false);
+
             playerInRangeOfDialogue = false;
             dialogueStarted = false;
         }
@@ -47,9 +57,15 @@ public class NarrativeComponent : MonoBehaviour
 
     public void EndDialogueBubble()
     {
+        if(dialogueStarted)
+        {
+            interactTutorial.StartInteractKeyBubble(interactKey);
+        }
         dialogueStarted = false;
         textBubbleAnimator.enabled = false;
         narrativeBubble.SetActive(false);
+
+        
         //Debug.Log("End conversation");
     }
 
@@ -69,8 +85,8 @@ public class NarrativeComponent : MonoBehaviour
     public void StartDialogueBubble()
     {
         narrativeBubble.SetActive(true);
-        
         textBubbleAnimator.enabled = true;
+
         textBubbleAnimator.SetBool("StayAnim", true);
         textBubbleAnimator.Rebind();
         textBubbleAnimator.Update(0f);
@@ -89,14 +105,15 @@ public class NarrativeComponent : MonoBehaviour
     public void StartDialogue()
     {
         //Si el jugador esta en rango de dialogo y el dialogo no ha iniciado -> Inicia dialogo
-        if (Input.GetKeyDown("f") && playerInRangeOfDialogue && !dialogueStarted)
+        if (Input.GetKeyDown(interactKey) && playerInRangeOfDialogue && !dialogueStarted)
         {
             //audioSource.PlayOneShot (greeting);
+            interactTutorial.interactTutorialAnimator.SetBool("StayAnim", false);
             dialogueStarted = true;
-            StartDialogueBubble();          
+            StartDialogueBubble();
             //Debug.Log("Dialogue manager started");
         }
-        else if (Input.GetKeyDown("f") && dialogueStarted)
+        else if (Input.GetKeyDown(interactKey) && dialogueStarted)
         {
             if (powerObtained)
             {
