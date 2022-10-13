@@ -5,13 +5,26 @@ using UnityEngine.UI;
 
 public class NarrativeComponent : MonoBehaviour
 {
-    public Dialogue dialogue;
-    //public AudioClip greeting;
-    public Text nameText, narrativeText;
+    [Header("Narrative Interface")]
+    public Text nameText;
+    public Text narrativeText;
     public GameObject narrativeBubble;
+    public Dialogue idleDialogue;
+
+    [Header("Quest Interface")]
+    public bool unlocksQuest = false;
+    public Dialogue questDialogue;
+    public string reward;
+
+    [Header("Interact Tutorial")]
+    public InteractTutorial interactTutorial;
+    public KeyCode interactKey = KeyCode.F;
+    
+
+    //public AudioClip greeting; 
 
     [HideInInspector]
-    public bool dialogueStarted = false, playerInRangeOfDialogue = false, powerObtained = false;
+    public bool dialogueStarted = false, playerInRangeOfDialogue = false;
 
     private AudioSource audioSource;
     private Animator textBubbleAnimator;
@@ -21,6 +34,7 @@ public class NarrativeComponent : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            interactTutorial.StartInteractKeyBubble(interactKey);
             playerInRangeOfDialogue = true;
             //audioSource.PlayOneShot (llamada);
             //Debug.Log("Player is in dialogue range");
@@ -33,6 +47,8 @@ public class NarrativeComponent : MonoBehaviour
         {
             //Debug.Log("Player is out of dialogue range");
             EndDialogueBubble();
+            interactTutorial.interactTutorialAnimator.SetBool("StayAnim", false);
+
             playerInRangeOfDialogue = false;
             dialogueStarted = false;
         }
@@ -47,14 +63,27 @@ public class NarrativeComponent : MonoBehaviour
 
     public void EndDialogueBubble()
     {
+        if(dialogueStarted)
+        {
+            interactTutorial.StartInteractKeyBubble(interactKey);
+        }
         dialogueStarted = false;
         textBubbleAnimator.enabled = false;
         narrativeBubble.SetActive(false);
+        
         //Debug.Log("End conversation");
     }
 
     public void DisplayNextSentence()
     {
+        if(unlocksQuest)
+        {
+            if(sentences.Count == 1)
+            {
+                GameManager.gmInstance.unlockQuestReward(reward);
+                unlocksQuest = false;
+            }
+        }
         if (sentences.Count == 0)
         {
             //EndDialogueBubble();
@@ -69,19 +98,30 @@ public class NarrativeComponent : MonoBehaviour
     public void StartDialogueBubble()
     {
         narrativeBubble.SetActive(true);
-        
         textBubbleAnimator.enabled = true;
+
         textBubbleAnimator.SetBool("StayAnim", true);
         textBubbleAnimator.Rebind();
         textBubbleAnimator.Update(0f);
         
-        nameText.text = dialogue.name;
+        nameText.text = idleDialogue.name;
         sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        if(unlocksQuest)
         {
-            sentences.Enqueue(sentence);
-            //Debug.Log(sentence);
+            foreach (string sentence in questDialogue.sentences)
+            {
+                sentences.Enqueue(sentence);
+                //Debug.Log(sentence);
+            }
+        }
+        else
+        {
+            foreach (string sentence in idleDialogue.sentences)
+            {
+                sentences.Enqueue(sentence);
+                //Debug.Log(sentence);
+            }
         }
         DisplayNextSentence();
     }
@@ -89,25 +129,18 @@ public class NarrativeComponent : MonoBehaviour
     public void StartDialogue()
     {
         //Si el jugador esta en rango de dialogo y el dialogo no ha iniciado -> Inicia dialogo
-        if (Input.GetKeyDown("f") && playerInRangeOfDialogue && !dialogueStarted)
+        if (Input.GetKeyDown(interactKey) && playerInRangeOfDialogue && !dialogueStarted)
         {
             //audioSource.PlayOneShot (greeting);
+            interactTutorial.interactTutorialAnimator.SetBool("StayAnim", false);
             dialogueStarted = true;
-            StartDialogueBubble();          
+            StartDialogueBubble();
             //Debug.Log("Dialogue manager started");
         }
-        else if (Input.GetKeyDown("f") && dialogueStarted)
+        else if (Input.GetKeyDown(interactKey) && dialogueStarted)
         {
-            if (powerObtained)
-            {
-                //Aqui le ponemos va la el codigo para desbloquear los poderes; 
-                //va a cambiar dependiendo de las necesidades del sistema
-            }
-            else
-            {
-                DisplayNextSentence();
-                //Debug.Log("Continue dialogue");
-            }
+            DisplayNextSentence();
+            //Debug.Log("Continue dialogue");
         }
     }
 

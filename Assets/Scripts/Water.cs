@@ -9,7 +9,7 @@ public class Water : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.GetComponent<PController>().isSwimming = true;
+            other.transform.GetComponent<PController>().isSwiming = true;
         }
         /*if (other.CompareTag("Player"))
         {
@@ -24,7 +24,7 @@ public class Water : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.GetComponent<PController>().isSwimming = false;
+            other.transform.GetComponent<PController>().isSwiming = false;
         }
         /*if (other.CompareTag("Player"))
         {

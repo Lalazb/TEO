@@ -4,129 +4,106 @@ using UnityEngine;
 
 public class PController : MonoBehaviour
 {
-    //integrar swimming y los triggers
-    //public variables
     public CharacterController controller;
-    public float speed = 8;
-    public float swimSpeed = 2;
-    public float dash = 100;
-    public float jumpForce = 10;
-    public float gravity = -20;
-    public float moveX = 5;
-    public float moveY = 10;
-    public float waterGravity = -2;
+    public float speed = 8f;
+    public float jumpForce = 10f;
+    public float gravity = -20f;
+    //public float waterGravity;
+    public bool hability;
+    public bool isGrounded;
+    public bool isSwiming;
+    public bool ableToMakeDoubleJump;
+    public Transform model;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    public bool isSwimming = false;
-    public bool ableToMakeDoubleJump = true;
+    public LayerMask waterMask;
 
-    //private variables
-    private bool isGrounded=true;
     private Vector3 direction;
-    private Rigidbody body;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
     // Update is called once per frame
-
-    public void FixSpriteHorizontalOrientation()
+    void Update()
     {
-        if (Input.GetAxisRaw("Horizontal") == -1)
-        {
-            this.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-        }
-        else if (Input.GetAxisRaw("Horizontal") == 1)
-        {
-            this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        }
-    }
-
-    private void Start()
-    {
-        this.body = this.GetComponent<Rigidbody>();
-    }
-
-    //probar con ray
-    void FixedUpdate()
-    {
+        //Move
         float hInput = Input.GetAxis("Horizontal");
-        
-        
-        if (isSwimming)
+        direction.x = hInput * speed;
+  
+        //Flip
+        if (hInput != 0)
         {
-            Swimming();
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(0, 0, hInput));
+            model.rotation = newRotation;
+        }
+
+        controller.Move(direction * Time.deltaTime);
+
+        //Jump
+        if (hability == false)
+        {
+            isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
+            direction.y += gravity * Time.deltaTime;
+            if (isGrounded)
+            {
+                if (Input.GetButtonUp("Jump"))
+                {
+                    direction.y = jumpForce;
+                }
+            }
+        }
+
+        //DoubleJump
+        if (hability == true)
+        {
+            isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
+            direction.y += gravity * Time.deltaTime;
+            if (isGrounded)
+            {
+                ableToMakeDoubleJump = true;
+                GameManager.gmInstance.changex2JumpIconOpacity(1.0f);
+                if (Input.GetButtonUp("Jump"))
+                {
+                    direction.y = jumpForce;
+                }
+            }
+            else
+            {
+                if(ableToMakeDoubleJump & Input.GetButtonUp("Jump"))
+                {
+                    direction.y = jumpForce;
+                    ableToMakeDoubleJump = false;
+                    GameManager.gmInstance.changex2JumpIconOpacity(0.5f);
+                }
+            }
+        }
+
+        //Swiming
+
+        isSwiming = Physics.CheckSphere(groundCheck.position, 0.2f, waterMask);
+
+        if (isSwiming)
+        {
+            gravity = -4f;
+            speed = 5f;
+           // jumpForce = 6f;
+            direction.y += gravity * Time.deltaTime;
+            if (Input.GetButtonUp("Jump"))
+            {
+                direction.y = jumpForce;
+                //float hInput = Input.GetAxis("Horizontal");
+                direction.x = hInput * speed;
+            }
         }
         else
         {
-            this.FixSpriteHorizontalOrientation();
-            JumpingVer2();
-
-            //Dash
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                direction.x = hInput * dash;
-                controller.Move(direction * Time.fixedDeltaTime);
-            }
-           
-            direction.x = hInput * speed;
-            controller.Move(direction * Time.fixedDeltaTime);
-            
+            speed = 8f;
+            gravity = -20f;
+            jumpForce = 10f;
         }
-    }
-
-    void Swimming()
-    {
-        if (Input.GetButton("Jump"))
-        {
-            body.AddForce(Vector3.up * moveY, ForceMode.Impulse);
-        }
-        else
-        {
-            body.velocity = new Vector2(moveX, waterGravity);
-        }
-    }
-
-    void Jumping()
-    {
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
-        if (isGrounded)
-        {
-            direction.y = -1;
-            if (Input.GetButton("Jump"))
-            {
-                ableToMakeDoubleJump = true;
-                direction.y = jumpForce;
-                //Debug.Log("Jump");
-            }
-        }
-        else //caida
-        {
-            direction.y += gravity * Time.fixedDeltaTime;
-            Debug.Log("Gravity");
-            if (ableToMakeDoubleJump & Input.GetButtonUp("Jump"))
-            {
-                direction.y = jumpForce;
-                ableToMakeDoubleJump = false;
-            }
-        }
-    }
-
-    void JumpingVer2()
-    {
-         isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
-         if (Input.GetButton("Jump") && isGrounded)
-         {
-                direction.y = -1;
-                ableToMakeDoubleJump = true;
-                direction.y = jumpForce;        
-         }
-         else //caida
-         {
-            direction.y += gravity * Time.fixedDeltaTime;
-            if (ableToMakeDoubleJump & Input.GetButtonUp("Jump")) //Tiene ButtonUp por lo que solo en un momento muy específico puedes hacer el doble salto; cuando APENAS va a caer
-            {
-                direction.y = jumpForce;
-                ableToMakeDoubleJump = false;
-            }
-         }
         
     }
-
 }

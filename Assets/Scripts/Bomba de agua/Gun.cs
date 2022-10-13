@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
-    //
+//
 {
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform firepoint;
@@ -16,10 +16,10 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        if (Input.GetKey(KeyCode.J) && chargeTime < 2) 
+        if (Input.GetKey(KeyCode.J) && chargeTime < 2)
         {
             isCharging = true;
-            if(isCharging == true)
+            if (isCharging == true)
             {
                 chargeTime += Time.deltaTime * chargeSpeed;
             }
@@ -28,7 +28,8 @@ public class Gun : MonoBehaviour
         {
             Instantiate(projectile, firepoint.position, firepoint.rotation);
             chargeTime = 0;
-        } else if(Input.GetKeyUp(KeyCode.F) && chargeTime >= 2)
+        }
+        else if (Input.GetKeyUp(KeyCode.J) && chargeTime >= 2)
         {
             ReleaseCharge();
         }

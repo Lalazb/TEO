@@ -164,8 +164,8 @@ MonoBehaviour:
   shootPos: {fileID: 8842781885837878497}
   range: 20
   timeBTWShots: 1
-  shootSpeedX: 5000
-  shootSpeedY: 2500
+  shootSpeedX: 800
+  shootSpeedY: 250
   seed: {fileID: 6207370223834066016, guid: d0af3a948e72e3c49a334b71532063c6, type: 3}
 --- !u!1 &8842781885837878498
 GameObject:
