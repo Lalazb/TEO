@@ -64,6 +64,7 @@ public class PController : MonoBehaviour
             if (isGrounded)
             {
                 ableToMakeDoubleJump = true;
+                GameManager.gmInstance.changex2JumpIconOpacity(1.0f);
                 if (Input.GetButtonUp("Jump"))
                 {
                     direction.y = jumpForce;
@@ -75,6 +76,7 @@ public class PController : MonoBehaviour
                 {
                     direction.y = jumpForce;
                     ableToMakeDoubleJump = false;
+                    GameManager.gmInstance.changex2JumpIconOpacity(0.5f);
                 }
             }
         }
