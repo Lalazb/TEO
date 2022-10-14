@@ -19,11 +19,11 @@ public class PController : MonoBehaviour
     public LayerMask waterMask;
 
     private Vector3 direction;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class PController : MonoBehaviour
         //Move
         float hInput = Input.GetAxis("Horizontal");
         direction.x = hInput * speed;
-  
+
         //Flip
         if (hInput != 0)
         {
@@ -64,23 +64,17 @@ public class PController : MonoBehaviour
             if (isGrounded)
             {
                 ableToMakeDoubleJump = true;
-<<<<<<< HEAD
                 if (Input.GetButtonDown("Jump"))
-=======
-                GameManager.gmInstance.changex2JumpIconOpacity(1.0f);
-                if (Input.GetButtonUp("Jump"))
->>>>>>> 70bccf3e29ad4c6b5c1a0c08a4ee35a69ca7cd68
                 {
                     direction.y = jumpForce;
                 }
             }
             else
             {
-                if(ableToMakeDoubleJump & Input.GetButtonDown("Jump"))
+                if (ableToMakeDoubleJump & Input.GetButtonDown("Jump"))
                 {
                     direction.y = jumpForce;
                     ableToMakeDoubleJump = false;
-                    GameManager.gmInstance.changex2JumpIconOpacity(0.5f);
                 }
             }
         }
@@ -93,7 +87,7 @@ public class PController : MonoBehaviour
         {
             gravity = -4f;
             speed = 5f;
-           // jumpForce = 6f;
+            // jumpForce = 6f;
             direction.y += gravity * Time.deltaTime;
             if (Input.GetButtonUp("Jump"))
             {
@@ -108,6 +102,6 @@ public class PController : MonoBehaviour
             gravity = -20f;
             jumpForce = 10f;
         }
-        
+
     }
 }
