@@ -49,7 +49,7 @@ public class PController : MonoBehaviour
             direction.y += gravity * Time.deltaTime;
             if (isGrounded)
             {
-                if (Input.GetButtonUp("Jump"))
+                if (Input.GetButtonDown("Jump"))
                 {
                     direction.y = jumpForce;
                 }
@@ -64,14 +64,14 @@ public class PController : MonoBehaviour
             if (isGrounded)
             {
                 ableToMakeDoubleJump = true;
-                if (Input.GetButtonUp("Jump"))
+                if (Input.GetButtonDown("Jump"))
                 {
                     direction.y = jumpForce;
                 }
             }
             else
             {
-                if(ableToMakeDoubleJump & Input.GetButtonUp("Jump"))
+                if(ableToMakeDoubleJump & Input.GetButtonDown("Jump"))
                 {
                     direction.y = jumpForce;
                     ableToMakeDoubleJump = false;

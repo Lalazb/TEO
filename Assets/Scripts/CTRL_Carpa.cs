@@ -23,38 +23,38 @@ public class CTRL_Carpa : MonoBehaviour
     {
         float factor = swimSpeed * Time.deltaTime;
         //move right
-        if(detected && detectedPlayer.position.z > transform.position.z)
+        if(detected && detectedPlayer.position.x > transform.position.x)
         {
-            transform.Translate(0f, 0f, factor);
+            transform.Translate(factor, 0f, 0f);
         }
         //move right and up
-        if (detected && detectedPlayer.position.z > transform.position.z && detectedPlayer.position.y > transform.position.y)
+        if (detected && detectedPlayer.position.x > transform.position.x && detectedPlayer.position.y > transform.position.y)
         {
-            transform.Translate(0f, factor, factor);
+            transform.Translate(factor, factor, 0f);
         }
         //move right and down
-        if (detected && detectedPlayer.position.z > transform.position.z && detectedPlayer.position.y < transform.position.y)
+        if (detected && detectedPlayer.position.x > transform.position.x && detectedPlayer.position.y < transform.position.y)
         {
-            transform.Translate(0f, factor*(-1f), factor);
+            transform.Translate(factor, factor*(-1f), 0f);
         }
 
 
         // /*
 
         //move left (just for proggress demo)
-        if (detected && detectedPlayer.position.z < transform.position.z)
+        if (detected && detectedPlayer.position.x < transform.position.x)
         {
-            transform.Translate(0f, 0f, factor * (-1f));
+            transform.Translate(factor * (-1f), 0f, 0f);
         }
         //move left & up (just for proggress demo)
-        if (detected && detectedPlayer.position.z < transform.position.z && detectedPlayer.position.y > transform.position.y)
+        if (detected && detectedPlayer.position.x < transform.position.x && detectedPlayer.position.y > transform.position.y)
         {
-            transform.Translate(0f, factor, factor * (-1f));
+            transform.Translate(factor * (-1f), factor, 0f);
         }
         //move left & down (just for proggress demo)
-        if (detected && detectedPlayer.position.z < transform.position.z && detectedPlayer.position.y < transform.position.y)
+        if (detected && detectedPlayer.position.x < transform.position.x && detectedPlayer.position.y < transform.position.y)
         {
-            transform.Translate(0f, factor*(-1f), factor * (-1f));
+            transform.Translate(factor * (-1f), factor*(-1f), 0f);
         }
 
         // */

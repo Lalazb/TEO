@@ -32,7 +32,7 @@ public class NarrativeComponent : MonoBehaviour
             playerInRangeOfDialogue = true;
             //audioSource.PlayOneShot (llamada);
             //Debug.Log("Player is in dialogue range");
-        }
+        }  
     }
 
     public void OnTriggerExit(Collider other)
