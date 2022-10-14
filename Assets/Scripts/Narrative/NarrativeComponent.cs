@@ -6,9 +6,15 @@ using UnityEngine.UI;
 public class NarrativeComponent : MonoBehaviour
 {
     [Header("Narrative Interface")]
-    public Dialogue dialogue;   
-    public Text nameText, narrativeText;
+    public Text nameText;
+    public Text narrativeText;
     public GameObject narrativeBubble;
+    public Dialogue idleDialogue;
+
+    [Header("Quest Interface")]
+    public bool unlocksQuest = false;
+    public Dialogue questDialogue;
+    public string reward;
 
     [Header("Interact Tutorial")]
     public InteractTutorial interactTutorial;
@@ -18,7 +24,7 @@ public class NarrativeComponent : MonoBehaviour
     //public AudioClip greeting; 
 
     [HideInInspector]
-    public bool dialogueStarted = false, playerInRangeOfDialogue = false, powerObtained = false;
+    public bool dialogueStarted = false, playerInRangeOfDialogue = false;
 
     private AudioSource audioSource;
     private Animator textBubbleAnimator;
@@ -64,13 +70,20 @@ public class NarrativeComponent : MonoBehaviour
         dialogueStarted = false;
         textBubbleAnimator.enabled = false;
         narrativeBubble.SetActive(false);
-
         
         //Debug.Log("End conversation");
     }
 
     public void DisplayNextSentence()
     {
+        if(unlocksQuest)
+        {
+            if(sentences.Count == 1)
+            {
+                GameManager.gmInstance.unlockQuestReward(reward);
+                unlocksQuest = false;
+            }
+        }
         if (sentences.Count == 0)
         {
             //EndDialogueBubble();
@@ -91,13 +104,24 @@ public class NarrativeComponent : MonoBehaviour
         textBubbleAnimator.Rebind();
         textBubbleAnimator.Update(0f);
         
-        nameText.text = dialogue.name;
+        nameText.text = idleDialogue.name;
         sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        if(unlocksQuest)
         {
-            sentences.Enqueue(sentence);
-            //Debug.Log(sentence);
+            foreach (string sentence in questDialogue.sentences)
+            {
+                sentences.Enqueue(sentence);
+                //Debug.Log(sentence);
+            }
+        }
+        else
+        {
+            foreach (string sentence in idleDialogue.sentences)
+            {
+                sentences.Enqueue(sentence);
+                //Debug.Log(sentence);
+            }
         }
         DisplayNextSentence();
     }
@@ -115,16 +139,8 @@ public class NarrativeComponent : MonoBehaviour
         }
         else if (Input.GetKeyDown(interactKey) && dialogueStarted)
         {
-            if (powerObtained)
-            {
-                //Aqui le ponemos va la el codigo para desbloquear los poderes; 
-                //va a cambiar dependiendo de las necesidades del sistema
-            }
-            else
-            {
-                DisplayNextSentence();
-                //Debug.Log("Continue dialogue");
-            }
+            DisplayNextSentence();
+            //Debug.Log("Continue dialogue");
         }
     }
 

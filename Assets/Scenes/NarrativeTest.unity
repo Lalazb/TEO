@@ -139,8 +139,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: reward
+      value: x2Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: unlocksQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
       propertyPath: dialogue.name
       value: adsfaadsasd
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.name
+      value: Khan Maykr Codex
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: questDialogue.name
+      value: Khan Maykr Codex
       objectReference: {fileID: 0}
     - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
       propertyPath: dialogue.sentences.Array.size
@@ -153,6 +169,56 @@ PrefabInstance:
     - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
       value: asdfadfsfsd
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: questDialogue.sentences.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.sentences.Array.data[0]
+      value: ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.sentences.Array.data[1]
+      value: 'Double Jump Ability Unlocked.
+
+        Press the "Jump Key" twice to
+        double jump.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.sentences.Array.data[2]
+      value: Press the "Jump Key" twice to double jump.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.sentences.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: questDialogue.sentences.Array.data[0]
+      value: In the first age...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: questDialogue.sentences.Array.data[1]
+      value: In the first battle...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: questDialogue.sentences.Array.data[2]
+      value: ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: questDialogue.sentences.Array.data[3]
+      value: 'Double Jump Ability Unlocked.
+
+        Press the "Jump Key" twice to
+        double jump.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: questDialogue.sentences.Array.data[4]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4131068017491871030, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
       propertyPath: m_RootOrder
@@ -285,7 +351,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &344895988
 GameObject:
@@ -382,7 +448,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &438438942
 GameObject:
@@ -480,7 +546,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &438438947
 MonoBehaviour:
@@ -518,14 +584,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503168044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.99, y: 3.26, z: 0}
+  m_LocalPosition: {x: 13.87, y: 3.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1789546057}
   - {fileID: 1158058530}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -619,7 +685,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &709030163
 GameObject:
@@ -716,7 +782,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &935403446
 GameObject:
@@ -784,7 +850,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -869,7 +935,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -980,7 +1046,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1158058529
 GameObject:
@@ -1175,7 +1241,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1332474464
 PrefabInstance:
@@ -1184,6 +1250,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8087166954229219024, guid: 7977d10bf4f476847a81ac6aab4c6483, type: 3}
+      propertyPath: hability
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8087166954229219025, guid: 7977d10bf4f476847a81ac6aab4c6483, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1194,7 +1264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8087166954229219028, guid: 7977d10bf4f476847a81ac6aab4c6483, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8087166954229219028, guid: 7977d10bf4f476847a81ac6aab4c6483, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1256,7 +1326,7 @@ GameObject:
   - component: {fileID: 1401684198}
   - component: {fileID: 1401684197}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Pedestal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1273,7 +1343,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2077375485}
   m_Father: {fileID: 1809219245}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1435,7 +1506,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1789546056
 PrefabInstance:
@@ -1457,6 +1528,10 @@ PrefabInstance:
       value: asedalskdfg
       objectReference: {fileID: 0}
     - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.name
+      value: "Acad\xE9mico del Platforming"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
       propertyPath: dialogue.sentences.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1471,6 +1546,26 @@ PrefabInstance:
     - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
       propertyPath: dialogue.sentences.Array.data[2]
       value: afgdfsghf
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.sentences.Array.data[0]
+      value: Tleo, puedes subir estas plataformas con el poder del doble salto.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.sentences.Array.data[1]
+      value: Puedes conseguir el poder del doble salto del libro, al este de aqui.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.sentences.Array.data[2]
+      value: "El libro llego de otra dimensi\xF3n."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131068017491871027, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
+      propertyPath: idleDialogue.sentences.Array.data[3]
+      value: "El libro llego de otra dimensi\xF3n."
       objectReference: {fileID: 0}
     - target: {fileID: 4131068017491871030, guid: 419b2c607c99a714eb34b7a9e70cd999, type: 3}
       propertyPath: m_RootOrder
@@ -1537,7 +1632,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1809219245}
   m_Layer: 0
-  m_Name: NarrativeItemPlaceHolder
+  m_Name: NarrativeQuestRewarUnlockerPlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1551,15 +1646,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809219244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.03, y: 0.28, z: -0.040641602}
+  m_LocalPosition: {x: -21.65, y: 0.28, z: -0.040641602}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 52253561}
   - {fileID: 1401684196}
-  - {fileID: 2077375485}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1927713669
 GameObject:
@@ -1656,7 +1750,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1963539455
 GameObject:
@@ -1850,7 +1944,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2077375484
 GameObject:
@@ -1879,13 +1973,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077375484}
   m_LocalRotation: {x: 0.23911767, y: 0.099045776, z: -0.3696438, w: 0.89239913}
-  m_LocalPosition: {x: -0.288, y: 0.926, z: -0.14}
-  m_LocalScale: {x: 0.69064, y: 0.13602845, z: 0.69064}
+  m_LocalPosition: {x: -0.2880001, y: 0.926, z: -0.14}
+  m_LocalScale: {x: 0.69064, y: 0.13602847, z: 0.69064}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1963539456}
-  m_Father: {fileID: 1809219245}
-  m_RootOrder: 2
+  m_Father: {fileID: 1401684196}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: -45}
 --- !u!65 &2077375486
 BoxCollider:
@@ -1950,3 +2044,60 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077375484}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &7683633308041296637
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7683633308111820742, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683633308111820742, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683633308111820742, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683633308111820742, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683633308111820742, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683633308111820742, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683633308111820742, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683633308111820742, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683633308111820742, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683633308111820742, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683633308111820742, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683633308111820743, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 58047cbccca35d74caa1cc4ff6187de9, type: 3}
