@@ -10,12 +10,9 @@ public class CTRL_Carpa : MonoBehaviour
     public float swimSpeed;
     Transform detectedPlayer;
 
-    //trig calculations and rotation
-    float opposedC;
-    float adjacentC;
-    float degs;
-    bool lookAt = false;
-    public LayerMask enemy;
+    //rotation
+    public GameObject target;
+    Vector2 dir;
 
 
 
@@ -36,63 +33,24 @@ public class CTRL_Carpa : MonoBehaviour
             transform.Translate(factor, 0f, 0f);
         }
         //move right and up
-        if (detected && detectedPlayer.position.x > transform.position.x && detectedPlayer.position.y > transform.position.y)
+        if (detected && detectedPlayer.position.x > transform.position.x &&  transform.rotation.z > 0 && transform.rotation.z < 91)
         {
-            transform.Translate(factor, factor, 0f);
+            transform.Translate(factor*1.3f, factor*1.3f, 0f);
         }
         //move right and down
-        if (detected && detectedPlayer.position.x > transform.position.x && detectedPlayer.position.y < transform.position.y)
+        if (detected && detectedPlayer.position.x > transform.position.x && transform.rotation.z < 0 && transform.rotation.z > -91)
         {
-            transform.Translate(factor, factor*(-1f), 0f);
+            transform.Translate(factor*1.3f, factor*(-1.3f), 0f);
         }
 
+        Vector2 targetPos = detectedPlayer.transform.position;
+        dir = targetPos - (Vector2)transform.position;
 
-        // /*
-
-        //move left (just for proggress demo)
-        if (detected && detectedPlayer.position.x < transform.position.x)
+        if (detected)
         {
-            transform.Translate(factor * (-1f), 0f, 0f);
+            transform.right = dir;
         }
-        //move left & up (just for proggress demo)
-        if (detected && detectedPlayer.position.x < transform.position.x && detectedPlayer.position.y > transform.position.y)
-        {
-            transform.Translate(factor * (-1f), factor, 0f);
-        }
-        //move left & down (just for proggress demo)
-        if (detected && detectedPlayer.position.x < transform.position.x && detectedPlayer.position.y < transform.position.y)
-        {
-            transform.Translate(factor * (-1f), factor*(-1f), 0f);
-        }
-
-        // */
-
-        // /*
-
-        RaycastHit follow = new RaycastHit();
-        Debug.DrawRay(transform.position, Vector3.right * 8f, Color.red);
-        if (Physics.Raycast(transform.position, -Vector3.up, out follow, 8f, enemy))
-        { 
-            lookAt = true; 
-        }
-        else
-        {
-            lookAt = false;
-        }
-
-
-        if (!lookAt)
-        {
-            opposedC = detectedPlayer.position.y - transform.position.y;
-            adjacentC = detectedPlayer.position.x - transform.position.x;
-
-            degs = Mathf.Atan2(opposedC, adjacentC) * Mathf.Rad2Deg;
-
-            transform.Rotate(0, 0, degs);
-        }
-       
-        //*/
-
+        
     }
 
     void OnTriggerEnter (Collider other)
