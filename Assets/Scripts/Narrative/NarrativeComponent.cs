@@ -32,7 +32,7 @@ public class NarrativeComponent : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("teo"))
         {
             interactTutorial.StartInteractKeyBubble(interactKey);
             playerInRangeOfDialogue = true;
@@ -43,7 +43,7 @@ public class NarrativeComponent : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("teo"))
         {
             //Debug.Log("Player is out of dialogue range");
             EndDialogueBubble();

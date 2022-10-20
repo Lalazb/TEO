@@ -215,7 +215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -651.0344, y: 401.6552}
+  m_AnchoredPosition: {x: -651.03455, y: 401.65515}
   m_SizeDelta: {x: 150, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7683633307749322749
@@ -377,13 +377,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126db8bdd13abc144bdca15d806c103a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartsIcons:
+  heartIcons:
   - {fileID: 7683633309233062084}
   - {fileID: 7683633307749322242}
   - {fileID: 7683633308963008612}
   - {fileID: 7683633308138948060}
   - {fileID: 7683633308978581774}
   jumpIcon: {fileID: 7683633307972860998}
+  playerController: {fileID: 0}
 --- !u!1 &7683633308138948066
 GameObject:
   m_ObjectHideFlags: 0

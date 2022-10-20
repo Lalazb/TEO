@@ -14,6 +14,7 @@ public class AtkMedusa : MonoBehaviour
         {
             TeoState.nslow = 1;
             TeoState.vidas -= 1;
+            GameManager.gmInstance.manageHearts();
             TeoState.SavePrefs();
             Destroy(this.gameObject);
             print("Vidas restantes " + TeoState.vidas);
