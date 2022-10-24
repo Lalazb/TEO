@@ -8,8 +8,6 @@ public class PController : MonoBehaviour
     public float speed = 8f;
     public float jumpForce = 10f;
     public float gravity = -20f;
-    public float NT = 0f;
-    public float resta = 1;
     //public float waterGravity;
     public bool hability;
     public bool isGrounded;
@@ -31,23 +29,6 @@ public class PController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Slow
-        if (NT > 0)
-            {
-                speed = 5;
-                NT -= resta * Time.deltaTime;
-            }
-            else
-            {
-                speed = 10;
-            }
-        if (TeoState.nslow == 1)
-        {
-            NT = 4;
-            TeoState.nslow = 0;
-            TeoState.SavePrefs();
-        }
-
         //Move
         float hInput = Input.GetAxis("Horizontal");
         direction.x = hInput * speed;
@@ -64,6 +45,7 @@ public class PController : MonoBehaviour
         //Jump
         if (hability == false)
         {
+            CheckRoof();
             isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
             direction.y += gravity * Time.deltaTime;
             if (isGrounded)
@@ -78,12 +60,12 @@ public class PController : MonoBehaviour
         //DoubleJump
         if (hability == true)
         {
+            CheckRoof();
             isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
             direction.y += gravity * Time.deltaTime;
             if (isGrounded)
             {
                 ableToMakeDoubleJump = true;
-                GameManager.gmInstance.changex2JumpIconOpacity(1.0f);
                 if (Input.GetButtonDown("Jump"))
                 {
                     direction.y = jumpForce;
@@ -95,7 +77,6 @@ public class PController : MonoBehaviour
                 {
                     direction.y = jumpForce;
                     ableToMakeDoubleJump = false;
-                    GameManager.gmInstance.changex2JumpIconOpacity(0.5f);
                 }
             }
         }
@@ -107,15 +88,14 @@ public class PController : MonoBehaviour
         if (isSwiming)
         {
             gravity = -4f;
-            speed = 5f;
-            // jumpForce = 6f;
-            direction.y += gravity * Time.deltaTime;
+            speed = 8f;
+            jumpForce = 6f;
             if (Input.GetButtonUp("Jump"))
             {
                 direction.y = jumpForce;
-                //float hInput = Input.GetAxis("Horizontal");
-                direction.x = hInput * speed;
+                // controller.Move(Vector3.right);
             }
+
         }
         else
         {
@@ -124,5 +104,14 @@ public class PController : MonoBehaviour
             jumpForce = 10f;
         }
 
+    }
+    private void CheckRoof()
+    {
+        RaycastHit hitInfo = new RaycastHit();
+        Debug.DrawRay(transform.position, Vector3.up * 1.1f, Color.red);
+        if (Physics.Raycast(transform.position, Vector3.up, out hitInfo, 1.1f, groundLayer))
+        {
+            gravity = -350f;
+        }
     }
 }

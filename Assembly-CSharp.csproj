@@ -56,32 +56,40 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\VidaRespawn\Ataque.cs" />
     <Compile Include="Assets\Scripts\Narrative\NarrativeComponent.cs" />
     <Compile Include="Assets\Scripts\Jumping.cs" />
+    <Compile Include="Assets\Scripts\VidaRespawn\TapaNeph.cs" />
+    <Compile Include="Assets\Scripts\VidaRespawn\TeoState.cs" />
     <Compile Include="Assets\Scripts\Obsolete\Char_Move1.cs" />
-    <Compile Include="Assets\Scripts\Swimming.cs" />
+    <Compile Include="Assets\Scripts\VidaRespawn\Checkpoint.cs" />
+    <Compile Include="Assets\Scripts\Obsolete\Swimming.cs" />
     <Compile Include="Assets\Scripts\PController.cs" />
     <Compile Include="Assets\Scripts\System\GameManager.cs" />
     <Compile Include="Assets\Scripts\Bomba de agua\Gun.cs" />
     <Compile Include="Assets\Scripts\Tutorial\InteractTutorial.cs" />
     <Compile Include="Assets\Scripts\Enemigos\MedusaSeed.cs" />
     <Compile Include="Assets\Scripts\Cam_Tracker.cs" />
+    <Compile Include="Assets\Scripts\VidaRespawn\TeoPJ.cs" />
     <Compile Include="Assets\Scripts\Buttons.cs" />
+    <Compile Include="Assets\Scripts\VidaRespawn\Controlelr.cs" />
+    <Compile Include="Assets\Scripts\Platforms\PlatDet.cs" />
     <Compile Include="Assets\Scripts\Enemigos\MoveMedusas.cs" />
-    <Compile Include="Assets\Scripts\Water.cs" />
+    <Compile Include="Assets\Scripts\Obsolete\Water.cs" />
     <Compile Include="Assets\Scripts\Enemigos\Shoot_Medusa.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\CTRL_Carpa.cs" />
     <Compile Include="Assets\Scripts\Obsolete\Jumping1.cs" />
     <Compile Include="Assets\Scripts\Narrative\Dialogue.cs" />
-    <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Obsolete\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Char_Move.cs" />
     <Compile Include="Assets\Scripts\Player_Mana.cs" />
+    <Compile Include="Assets\Scripts\VidaRespawn\AtkMedusa.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Obsolete\Movement1.cs" />
     <Compile Include="Assets\Scripts\Platforms\MovePlatforms.cs" />
     <Compile Include="Assets\Scripts\Bomba de agua\Projectile.cs" />
-    <Compile Include="Assets\Scripts\Platforms\PlatDet.cs" />
+    <Compile Include="Assets\Scripts\NadoFinal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

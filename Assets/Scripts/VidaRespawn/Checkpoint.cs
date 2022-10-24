@@ -11,7 +11,7 @@ public class Checkpoint : MonoBehaviour
     {
         PosI = TeoState.position.z;
         PosN = this.transform.position.z;
-        if (other.tag == "teo" && PosN > PosI)
+        if (other.tag == "Player" && PosN > PosI)
         {
             if (this.tag == "hcheck")
             {

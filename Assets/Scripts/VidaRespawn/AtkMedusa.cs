@@ -10,7 +10,7 @@ public class AtkMedusa : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "teo" && TeoState.vidas > 0)
+        if (other.tag == "Player" && TeoState.vidas > 0)
         {
             TeoState.nslow = 1;
             TeoState.vidas -= 1;
