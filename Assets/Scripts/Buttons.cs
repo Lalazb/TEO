@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class Buttons : MonoBehaviour
 {
 
-    public static bool GameIsPaused = false;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -23,16 +21,6 @@ public class Buttons : MonoBehaviour
     public void QuitClick()
     {
         Application.Quit();
-    }
-
-    public void Continue()
-    {
-        SceneManager.LoadScene("EscenaPrueba");
-    }
-
-    public void Regresar()
-    {
-        SceneManager.LoadScene("Menu");
     }
 
 }
