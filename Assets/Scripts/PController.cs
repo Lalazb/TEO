@@ -8,6 +8,9 @@ public class PController : MonoBehaviour
     public float speed = 8f;
     public float jumpForce = 10f;
     public float gravity = -20f;
+    public float NT = 0f;
+    public float resta = 1;
+    public bool moving;
     //public float waterGravity;
     public bool hability;
     public bool isGrounded;
@@ -23,25 +26,44 @@ public class PController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        moving = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Move
-        float hInput = Input.GetAxis("Horizontal");
-        direction.x = hInput * speed;
-
-        //Flip
-        if (hInput != 0)
+        //Slow
+        if (NT > 0)
         {
-            Quaternion newRotation = Quaternion.LookRotation(new Vector3(0, 0, hInput));
-            model.rotation = newRotation;
+            speed = 5;
+            NT -= resta * Time.deltaTime;
+        }
+        else
+        {
+            speed = 10;
+        }
+        if (TeoState.nslow == 1)
+        {
+            NT = 4;
+            TeoState.nslow = 0;
+            TeoState.SavePrefs();
         }
 
-        controller.Move(direction * Time.deltaTime);
+        //Move
+        if (moving == true)
+        {
+            float hInput = Input.GetAxis("Horizontal");
+            direction.x = hInput * speed;
 
+            //Flip
+            if (hInput != 0)
+            {
+                Quaternion newRotation = Quaternion.LookRotation(new Vector3(0, 0, hInput));
+                model.rotation = newRotation;
+            }
+
+            controller.Move(direction * Time.deltaTime);
+        }
         //Jump
         if (hability == false)
         {

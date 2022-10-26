@@ -9,8 +9,8 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PosI = TeoState.position.z;
-        PosN = this.transform.position.z;
+        PosI = TeoState.position.x;
+        PosN = this.transform.position.x;
         if (other.tag == "Player" && PosN > PosI)
         {
             if (this.tag == "hcheck")
@@ -18,17 +18,17 @@ public class Checkpoint : MonoBehaviour
                 TeoState.hposition = this.transform.position;
                 TeoState.SavePrefs();
                 print("Ultimo checkpoint" + TeoState.hposition);
-                Material material = gameObject.GetComponent<MeshRenderer>().material;
-                material.color = Color.green;
+                //Material material = gameObject.GetComponent<MeshRenderer>().material;
+               // material.color = Color.green;
                 print(PosI + "seg" + PosN);
             }
             else
             {
                 TeoState.position = this.transform.position;
                 TeoState.SavePrefs();
-                print("Ultimo checkpoint" + TeoState.position);
-                Material material = gameObject.GetComponent<MeshRenderer>().material;
-                material.color = Color.green;
+                print("Ultimo checkpoint_nohcheck" + TeoState.position);
+               // Material material = gameObject.GetComponent<MeshRenderer>().material;
+               // material.color = Color.green;
                 print(PosI + "seg" + PosN);
             }
         }

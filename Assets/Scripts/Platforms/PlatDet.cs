@@ -38,16 +38,18 @@ public class PlatDet : MonoBehaviour
 
     void OnTriggerEnter (Collider other)
     {
-        if (other.tag == "PlatMove" && !detected)
+        if (other.tag == "PlatMove")
         {
             detected = true;
             detectedPlayer = other.transform;
+            //GetComponent<PController>().moving = false;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         detected = false;
+        //GetComponent<PController>().moving = true;
     }
 
 }

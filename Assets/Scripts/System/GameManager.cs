@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
     [Header("Player Data")]
     public Image[] heartIcons = new Image[5];
     public Image jumpIcon;
+   // public Image bombIcon;
 
     [HideInInspector]
     public PController playerController;
+    //public Gun waterBomb;
 
     private int maxHearts = TeoState.vidas;
 
@@ -25,9 +27,17 @@ public class GameManager : MonoBehaviour
                 jumpIcon.gameObject.SetActive(true);
                 playerController.hability = true;
                 break;
-            }        
+            }
             default:
                 break;
+           // case "waterBomb":
+           // {
+               // bombIcon.gameObject.SetActive(true);
+                //waterBomb=enabled;
+               // break;
+          //  }
+           // default:
+               // break;
         }
     }
 
@@ -58,5 +68,6 @@ public class GameManager : MonoBehaviour
     {
         gmInstance = this;
         playerController = FindObjectOfType<PController>();
+        //waterBomb = FindObjectOfType<Gun>();
     }
 }
