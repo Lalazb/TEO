@@ -126,6 +126,11 @@ public class PController : MonoBehaviour
             jumpForce = 10f;
         }
 
+        //Prueba
+        if (TeoState.vidas == 0)
+        {
+            StartCoroutine(PausaRes());
+        }
     }
     private void CheckRoof()
     {
@@ -135,5 +140,12 @@ public class PController : MonoBehaviour
         {
             gravity = -350f;
         }
+    }
+
+    IEnumerator PausaRes()
+    {
+        moving = false;
+        yield return new WaitForSeconds(2);
+        moving = true;
     }
 }
