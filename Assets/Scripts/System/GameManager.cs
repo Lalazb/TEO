@@ -11,11 +11,14 @@ public class GameManager : MonoBehaviour
     public Image[] heartIcons = new Image[5];
     public Image jumpIcon;
     public Image bombIcon;
+    public Image shieldIcon;
 
     [HideInInspector]
     public PController playerController;
     [HideInInspector]
     public Gun waterBomb;
+    [HideInInspector]
+    public Shield shield;
 
     private int maxHearts = TeoState.vidas;
     private int varH = 5;
@@ -39,6 +42,15 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             }
+            case "catShield":
+             {
+                if (shield != null)
+                {
+                    shieldIcon.gameObject.SetActive(true);
+                    shield.enabled = true;
+                }
+                break;
+             }
             default:
             break;
         }
@@ -85,5 +97,6 @@ public class GameManager : MonoBehaviour
         gmInstance = this;
         playerController = FindObjectOfType<PController>();
         waterBomb = FindObjectOfType<Gun>();
+        shield = FindObjectOfType<Shield>();
     }
 }
