@@ -16,10 +16,12 @@ public class Gun : MonoBehaviour
     public float scaleChange = 0.01f;
     [SerializeField] private GameObject growth;
 
+    bool cooldown = true;
+
     // Start is called before the first frame update
     void Update()
     {
-        if (Input.GetKey(KeyCode.J) && chargeTime < 2) 
+        if (Input.GetKey(KeyCode.J) && chargeTime < 2 && cooldown) 
         {
             isCharging = true;
             if(isCharging == true)
@@ -30,12 +32,16 @@ public class Gun : MonoBehaviour
                 newgrowth.transform.localScale += new Vector3 (scale, scale, scale);
                 Destroy(newgrowth, 0.1f);
             }
+            //cooldown = false;
+            //StartCoroutine(TimeOut());
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && cooldown)
         {
             Instantiate(projectile, firepoint.position, firepoint.rotation);
             chargeTime = 0;
-        } else if(Input.GetKeyUp(KeyCode.J) && chargeTime >= 2)
+            cooldown = false;
+            StartCoroutine(TimeOut());
+        } else if(Input.GetKeyUp(KeyCode.J) && chargeTime >= 2 )
         {
             ReleaseCharge();
         }
@@ -48,7 +54,13 @@ public class Gun : MonoBehaviour
         Instantiate(chargedProjectile, firepoint.position, firepoint.rotation);
         isCharging = false;
         chargeTime = 0;
+        cooldown = false;
+        StartCoroutine(TimeOut());
     }
 
-    
+    IEnumerator TimeOut()
+    {
+        yield return new WaitForSeconds(5);
+        cooldown = true;
+    }
 }

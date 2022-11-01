@@ -127,7 +127,7 @@ public class PController : MonoBehaviour
         }
 
         //Prueba
-        if (TeoState.vidas == 0)
+        if (TeoState.vidas <= 0 || TeoState.resp == 1)
         {
             StartCoroutine(PausaRes());
         }
@@ -145,7 +145,8 @@ public class PController : MonoBehaviour
     IEnumerator PausaRes()
     {
         moving = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+        NT = 0;
         moving = true;
     }
 }

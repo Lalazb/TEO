@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public Gun waterBomb;
 
     private int maxHearts = TeoState.vidas;
+    private int varH = 5;
 
     public void unlockQuestReward(string reward)
     {
@@ -48,14 +49,27 @@ public class GameManager : MonoBehaviour
         jumpIcon.color = new Color(jumpIcon.color.r, jumpIcon.color.g, jumpIcon.color.b, value);
     }
 
-    public void manageHearts()
+    public void manageHearts(int type)
     {
-        maxHearts--;
-        heartIcons[maxHearts].color = 
-        new Color(heartIcons[maxHearts].color.r, heartIcons[maxHearts].color.g, heartIcons[maxHearts].color.b, 0.5f);
-        if(maxHearts == 0)
+        if (type == 0)
         {
-            maxHearts += 5;
+            maxHearts--;
+            varH--;
+            heartIcons[maxHearts].color =
+            new Color(heartIcons[maxHearts].color.r, heartIcons[maxHearts].color.g, heartIcons[maxHearts].color.b, 0.5f);
+        }
+        else if (type == 1)
+        {
+            maxHearts++;
+            heartIcons[varH].color =
+            new Color(heartIcons[varH].color.r, heartIcons[varH].color.g, heartIcons[varH].color.b, 1.0f);
+            varH++;
+        }
+
+        if (maxHearts == 0)
+        {
+            maxHearts += 4;
+            varH = 4;
             for(int i = 0; i < maxHearts; i++)
             {
                 heartIcons[i].color = 
