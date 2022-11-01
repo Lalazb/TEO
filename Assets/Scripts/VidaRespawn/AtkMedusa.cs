@@ -5,7 +5,7 @@ using UnityEngine;
 public class AtkMedusa : MonoBehaviour
 {
 
-    //public int Displayvidas = TeoState.vidas;
+    public int type = 0;
     //public TextMeshProUGUI DVidas;
 
     private void OnTriggerEnter(Collider other)
@@ -14,7 +14,7 @@ public class AtkMedusa : MonoBehaviour
         {
             TeoState.nslow = 1;
             TeoState.vidas -= 1;
-            GameManager.gmInstance.manageHearts();
+            GameManager.gmInstance.manageHearts(type);
             TeoState.SavePrefs();
             Destroy(this.gameObject);
             print("Vidas restantes " + TeoState.vidas);

@@ -17,6 +17,7 @@ public class PController : MonoBehaviour
     public Transform model;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public bool move = true;
 
     private Vector3 direction;
 
@@ -46,8 +47,11 @@ public class PController : MonoBehaviour
         }
 
         //Move
+        if (move)
+        {
             float hInput = Input.GetAxis("Horizontal");
             direction.x = hInput * speed;
+
 
             //Flip
             if (hInput != 0)
@@ -57,7 +61,7 @@ public class PController : MonoBehaviour
             }
 
             controller.Move(direction * Time.deltaTime);
-        
+        }
         //Jump
         if (hability == false)
         {
@@ -98,8 +102,8 @@ public class PController : MonoBehaviour
         }
 
 
-        //Prueba
-        if (TeoState.vidas == 0)
+        //Respawn
+        if (TeoState.vidas == 0 || TeoState.resp == 1)
         {
             StartCoroutine(PausaRes());
         }
@@ -116,7 +120,9 @@ public class PController : MonoBehaviour
 
     IEnumerator PausaRes()
     {
-        yield return new WaitForSeconds(2);
-        
+        move = false;
+        yield return new WaitForSeconds(1);
+        NT = 0;
+        move = true;
     }
 }

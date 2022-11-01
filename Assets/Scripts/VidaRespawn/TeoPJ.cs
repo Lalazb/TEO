@@ -7,6 +7,8 @@ public class TeoPJ : MonoBehaviour
 {
     public int Displayvidas = TeoState.vidas;
     public TextMeshProUGUI DVidas;
+    bool regenerar = true;
+    int type = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,7 @@ public class TeoPJ : MonoBehaviour
         if (TeoState.vidas == 0)
         {
             this.transform.position = TeoState.hposition;
-            TeoState.vidas += 5;
+            TeoState.vidas = 4;
             //respawn = true;
         }
         else if (TeoState.resp == 1)
@@ -30,6 +32,20 @@ public class TeoPJ : MonoBehaviour
             this.transform.position = TeoState.position;
             TeoState.resp = 0;
         }
+
+        if (TeoState.vidas <= 4 && regenerar && TeoState.vidas != 0)
+        {
+            regenerar = false;
+            StartCoroutine(Regen());
+        }
+    }
+
+    IEnumerator Regen()
+    {
+        yield return new WaitForSeconds(2);
+        TeoState.vidas += 1;
+        GameManager.gmInstance.manageHearts(type);
+        regenerar = true;
     }
 }
 
