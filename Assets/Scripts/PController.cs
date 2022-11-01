@@ -10,23 +10,19 @@ public class PController : MonoBehaviour
     public float gravity = -20f;
     public float NT = 0f;
     public float resta = 1;
-    public bool moving;
     //public float waterGravity;
     public bool hability;
     public bool isGrounded;
-    public bool isSwiming;
     public bool ableToMakeDoubleJump;
     public Transform model;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    public LayerMask waterMask;
 
     private Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
     {
-        moving = true;
     }
 
     // Update is called once per frame
@@ -50,8 +46,6 @@ public class PController : MonoBehaviour
         }
 
         //Move
-        if (moving == true)
-        {
             float hInput = Input.GetAxis("Horizontal");
             direction.x = hInput * speed;
 
@@ -63,7 +57,7 @@ public class PController : MonoBehaviour
             }
 
             controller.Move(direction * Time.deltaTime);
-        }
+        
         //Jump
         if (hability == false)
         {
@@ -103,28 +97,6 @@ public class PController : MonoBehaviour
             }
         }
 
-        //Swiming
-
-        isSwiming = Physics.CheckSphere(groundCheck.position, 0.2f, waterMask);
-
-        if (isSwiming)
-        {
-            gravity = -4f;
-            speed = 8f;
-            jumpForce = 6f;
-            if (Input.GetButtonUp("Jump"))
-            {
-                direction.y = jumpForce;
-                // controller.Move(Vector3.right);
-            }
-
-        }
-        else
-        {
-            speed = 8f;
-            gravity = -20f;
-            jumpForce = 10f;
-        }
 
         //Prueba
         if (TeoState.vidas == 0)
@@ -144,8 +116,7 @@ public class PController : MonoBehaviour
 
     IEnumerator PausaRes()
     {
-        moving = false;
         yield return new WaitForSeconds(2);
-        moving = true;
+        
     }
 }
