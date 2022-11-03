@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8087166954229219024}
   - component: {fileID: 8087166954229219031}
   - component: {fileID: 8245246399074424382}
+  - component: {fileID: 3413755195523070896}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -167,6 +168,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 5
+--- !u!114 &3413755195523070896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087166954229219025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c706076c8500b34bac46aaeae146506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerShield: {fileID: 3274749671706003446}
+  shieldTimeout: 0
 --- !u!1 &8087166954489943927
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +343,11 @@ PrefabInstance:
 --- !u!4 &2754496346377248076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c0508f0c0d1441c478e229f5b5dfc80e, type: 3}
+  m_PrefabInstance: {fileID: 2428379904615660199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3274749671706003446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c0508f0c0d1441c478e229f5b5dfc80e, type: 3}
   m_PrefabInstance: {fileID: 2428379904615660199}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3866627607802013542
