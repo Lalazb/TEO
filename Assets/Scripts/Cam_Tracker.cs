@@ -13,7 +13,7 @@ public class Cam_Tracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position - target.position;   
+        offset = transform.position - target.position;
     }
 
     // Update is called once per frame

@@ -4,129 +4,149 @@ using UnityEngine;
 
 public class PController : MonoBehaviour
 {
-    //integrar swimming y los triggers
-    //public variables
     public CharacterController controller;
-    public float speed = 8;
-    public float swimSpeed = 2;
-    public float dash = 100;
-    public float jumpForce = 10;
-    public float gravity = -20;
-    public float moveX = 5;
-    public float moveY = 10;
-    public float waterGravity = -2;
+    public float speed = 8f;
+    public float jumpForce = 10f;
+    public float gravity = -20f;
+    public float NT = 0f;
+    public float resta = 1;
+    public bool moving;
+    //public float waterGravity;
+    public bool hability;
+    public bool isGrounded;
+    public bool isSwiming;
+    public bool ableToMakeDoubleJump;
+    public Transform model;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    public bool isSwimming = false;
-    public bool ableToMakeDoubleJump = true;
+    public LayerMask waterMask;
 
-    //private variables
-    private bool isGrounded=true;
     private Vector3 direction;
-    private Rigidbody body;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        moving = true;
+    }
+
     // Update is called once per frame
-
-    public void FixSpriteHorizontalOrientation()
+    void Update()
     {
-        if (Input.GetAxisRaw("Horizontal") == -1)
+        //Slow
+        if (NT > 0)
         {
-            this.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-        }
-        else if (Input.GetAxisRaw("Horizontal") == 1)
-        {
-            this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        }
-    }
-
-    private void Start()
-    {
-        this.body = this.GetComponent<Rigidbody>();
-    }
-
-    //probar con ray
-    void FixedUpdate()
-    {
-        float hInput = Input.GetAxis("Horizontal");
-        
-        
-        if (isSwimming)
-        {
-            Swimming();
+            speed = 5;
+            NT -= resta * Time.deltaTime;
         }
         else
         {
-            this.FixSpriteHorizontalOrientation();
-            JumpingVer2();
+            speed = 10;
+        }
+        if (TeoState.nslow == 1)
+        {
+            NT = 4;
+            TeoState.nslow = 0;
+            TeoState.SavePrefs();
+        }
 
-            //Dash
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                direction.x = hInput * dash;
-                controller.Move(direction * Time.fixedDeltaTime);
-            }
-           
+        //Move
+        if (moving == true)
+        {
+            float hInput = Input.GetAxis("Horizontal");
             direction.x = hInput * speed;
-            controller.Move(direction * Time.fixedDeltaTime);
-            
-        }
-    }
 
-    void Swimming()
-    {
-        if (Input.GetButton("Jump"))
+            //Flip
+            if (hInput != 0)
+            {
+                Quaternion newRotation = Quaternion.LookRotation(new Vector3(0, 0, hInput));
+                model.rotation = newRotation;
+            }
+
+            controller.Move(direction * Time.deltaTime);
+        }
+        //Jump
+        if (hability == false)
         {
-            body.AddForce(Vector3.up * moveY, ForceMode.Impulse);
+            CheckRoof();
+            isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
+            direction.y += gravity * Time.deltaTime;
+            if (isGrounded)
+            {
+                if (Input.GetButtonDown("Jump"))
+                {
+                    direction.y = jumpForce;
+                }
+            }
+        }
+
+        //DoubleJump
+        if (hability == true)
+        {
+            CheckRoof();
+            isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
+            direction.y += gravity * Time.deltaTime;
+            if (isGrounded)
+            {
+                ableToMakeDoubleJump = true;
+                if (Input.GetButtonDown("Jump"))
+                {
+                    direction.y = jumpForce;
+                }
+            }
+            else
+            {
+                if (ableToMakeDoubleJump & Input.GetButtonDown("Jump"))
+                {
+                    direction.y = jumpForce;
+                    ableToMakeDoubleJump = false;
+                }
+            }
+        }
+
+        //Swiming
+
+        isSwiming = Physics.CheckSphere(groundCheck.position, 0.2f, waterMask);
+
+        if (isSwiming)
+        {
+            gravity = -4f;
+            speed = 8f;
+            jumpForce = 6f;
+            if (Input.GetButtonUp("Jump"))
+            {
+                direction.y = jumpForce;
+                // controller.Move(Vector3.right);
+            }
+
         }
         else
         {
-            body.velocity = new Vector2(moveX, waterGravity);
+            speed = 8f;
+            gravity = -20f;
+            jumpForce = 10f;
         }
-    }
 
-    void Jumping()
-    {
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
-        if (isGrounded)
+        //Prueba
+        if (TeoState.vidas <= 0 || TeoState.resp == 1)
         {
-            direction.y = -1;
-            if (Input.GetButton("Jump"))
-            {
-                ableToMakeDoubleJump = true;
-                direction.y = jumpForce;
-                //Debug.Log("Jump");
-            }
-        }
-        else //caida
-        {
-            direction.y += gravity * Time.fixedDeltaTime;
-            Debug.Log("Gravity");
-            if (ableToMakeDoubleJump & Input.GetButtonUp("Jump"))
-            {
-                direction.y = jumpForce;
-                ableToMakeDoubleJump = false;
-            }
+            StartCoroutine(PausaRes());
         }
     }
-
-    void JumpingVer2()
+    private void CheckRoof()
     {
-         isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
-         if (Input.GetButton("Jump") && isGrounded)
-         {
-                direction.y = -1;
-                ableToMakeDoubleJump = true;
-                direction.y = jumpForce;        
-         }
-         else //caida
-         {
-            direction.y += gravity * Time.fixedDeltaTime;
-            if (ableToMakeDoubleJump & Input.GetButtonUp("Jump")) //Tiene ButtonUp por lo que solo en un momento muy específico puedes hacer el doble salto; cuando APENAS va a caer
-            {
-                direction.y = jumpForce;
-                ableToMakeDoubleJump = false;
-            }
-         }
-        
+        RaycastHit hitInfo = new RaycastHit();
+        Debug.DrawRay(transform.position, Vector3.up * 1.1f, Color.red);
+        if (Physics.Raycast(transform.position, Vector3.up, out hitInfo, 1.1f, groundLayer))
+        {
+            gravity = -350f;
+        }
     }
 
+    IEnumerator PausaRes()
+    {
+        moving = false;
+        yield return new WaitForSeconds(1);
+        NT = 0;
+        moving = true;
+    }
 }
