@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 6247120e7fb83bd438118bcb355c1ada
+guid: 2cc05ba7e30219340a20fd42b3b274de
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: caida
+    second: idle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: caida
+      name: idle
       takeName: Take 001
       internalID: 0
-      firstFrame: 1
-      lastFrame: 32
+      firstFrame: 0
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
