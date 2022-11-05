@@ -13,11 +13,11 @@ public class PController : MonoBehaviour
     public bool moving;
     public bool hability;
     public bool isGrounded;
-    public bool isSwiming;
     public bool ableToMakeDoubleJump;
     public Transform model;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public bool moveDetected;
 
     private Vector3 direction;
     Animator animator;
@@ -45,77 +45,8 @@ public class PController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Slow
-        if (NT > 0)
-        {
-            speed = 5;
-            NT -= resta * Time.deltaTime;
-        }
-        else
-        {
-            speed = 10;
-        }
-        if (TeoState.nslow == 1)
-        {
-            NT = 4;
-            TeoState.nslow = 0;
-            TeoState.SavePrefs();
-        }
-
-        //Move
-        if (moving == true)
-        {
-            float hInput = Input.GetAxis("Horizontal");
-            direction.x = hInput * speed;
-
-            //Flip
-            if (hInput != 0)
-            {
-                Quaternion newRotation = Quaternion.LookRotation(new Vector3(hInput, 0, 0));
-                model.rotation = newRotation;
-            }
-
-            controller.Move(direction * Time.deltaTime);
-        }
-        //Jump
-        if (hability == false)
-        {
-            CheckRoof();
-            isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
-            direction.y += gravity * Time.deltaTime;
-            if (isGrounded)
-            {
-                if (Input.GetButtonDown("Jump"))
-                {
-                    direction.y = jumpForce;
-                }
-            }
-        }
-
-        //DoubleJump
-        if (hability == true)
-        {
-            CheckRoof();
-            isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
-            direction.y += gravity * Time.deltaTime;
-            if (isGrounded)
-            {
-                ableToMakeDoubleJump = true;
-                if (Input.GetButtonDown("Jump"))
-                {
-                    direction.y = jumpForce;
-                }
-            }
-            else
-            {
-                if (ableToMakeDoubleJump & Input.GetButtonDown("Jump"))
-                {
-                    direction.y = jumpForce;
-                    ableToMakeDoubleJump = false;
-                }
-            }
-        }
-
+        Walk();
+        Jump();
         //Prueba
         if (TeoState.vidas <= 0 || TeoState.resp == 1)
         {
@@ -199,12 +130,91 @@ public class PController : MonoBehaviour
 
     void Walk()
     {
-        ChangeState(TeoStates.Walk);
+        
+        //Slow
+        if (NT > 0)
+        {
+            speed = 5;
+            NT -= resta * Time.deltaTime;
+        }
+        else
+        {
+            speed = 8;
+        }
+        if (TeoState.nslow == 1)
+        {
+            NT = 4;
+            TeoState.nslow = 0;
+            TeoState.SavePrefs();
+        }
+
+        //Move
+        if (moving == true)
+        {
+            float hInput = Input.GetAxis("Horizontal");
+            direction.x = hInput * speed;
+            moveDetected = false;
+
+            //Flip
+            if (hInput != 0)
+            {
+                Quaternion newRotation = Quaternion.LookRotation(new Vector3(hInput, 0, 0));
+                model.rotation = newRotation;
+                moveDetected = true;
+                if(moveDetected==true)
+                {
+                    ChangeState(TeoStates.Walk);
+                }
+                else
+                {
+                    ChangeState(TeoStates.Idle);
+                }
+            }
+
+            controller.Move(direction * Time.deltaTime);
+        }
     }
 
     void Jump()
     {
+        //Jump
+        if (hability == false)
+        {
+            CheckRoof();
+            isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
+            direction.y += gravity * Time.deltaTime;
+            if (isGrounded)
+            {
+                if (Input.GetButtonDown("Jump"))
+                {
+                    direction.y = jumpForce;
+                }
+            }
+        }
 
+        //DoubleJump
+        if (hability == true)
+        {
+            CheckRoof();
+            isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
+            direction.y += gravity * Time.deltaTime;
+            if (isGrounded)
+            {
+                ableToMakeDoubleJump = true;
+                if (Input.GetButtonDown("Jump"))
+                {
+                    direction.y = jumpForce;
+                }
+            }
+            else
+            {
+                if (ableToMakeDoubleJump & Input.GetButtonDown("Jump"))
+                {
+                    direction.y = jumpForce;
+                    ableToMakeDoubleJump = false;
+                }
+            }
+        }
     }
 
     void Caida()
