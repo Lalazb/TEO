@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 709245300}
   - component: {fileID: 709245299}
   - component: {fileID: 709245298}
+  - component: {fileID: 709245301}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -293,14 +294,28 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709245297}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -3.44}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 1.47, y: 2.5, z: -3.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+--- !u!114 &709245301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709245297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b185b4c40d7d5468646eadac94d597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1205989238}
+  smooth: 5
 --- !u!1 &1024484019
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,8 +406,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024484019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.33, y: 0, z: 0}
-  m_LocalScale: {x: 25.794361, y: -0.020813633, z: 3.700759}
+  m_LocalPosition: {x: 40.27, y: 0, z: 0}
+  m_LocalScale: {x: 98.70212, y: -0.020813633, z: 3.700759}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -471,20 +486,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1205989236}
   speed: 8
-  jumpForce: 10
-  gravity: -20
+  jumpForce: 5
+  gravity: -10
   NT: 0
   resta: 1
   moving: 1
   hability: 1
   isGrounded: 0
-  isSwiming: 0
   ableToMakeDoubleJump: 0
   model: {fileID: 1205989238}
   groundCheck: {fileID: 1170503676}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  moveDetected: 0
 --- !u!1 &1682383004
 GameObject:
   m_ObjectHideFlags: 0
