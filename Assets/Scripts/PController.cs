@@ -14,12 +14,10 @@ public class PController : MonoBehaviour
     //public float waterGravity;
     public bool hability;
     public bool isGrounded;
-    public bool isSwiming;
     public bool ableToMakeDoubleJump;
     public Transform model;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    public LayerMask waterMask;
 
     private Vector3 direction;
 
@@ -58,7 +56,7 @@ public class PController : MonoBehaviour
             //Flip
             if (hInput != 0)
             {
-                Quaternion newRotation = Quaternion.LookRotation(new Vector3(0, 0, hInput));
+                Quaternion newRotation = Quaternion.LookRotation(new Vector3(hInput, 0, 0));
                 model.rotation = newRotation;
             }
 
@@ -101,29 +99,6 @@ public class PController : MonoBehaviour
                     ableToMakeDoubleJump = false;
                 }
             }
-        }
-
-        //Swiming
-
-        isSwiming = Physics.CheckSphere(groundCheck.position, 0.2f, waterMask);
-
-        if (isSwiming)
-        {
-            gravity = -4f;
-            speed = 8f;
-            jumpForce = 6f;
-            if (Input.GetButtonUp("Jump"))
-            {
-                direction.y = jumpForce;
-                // controller.Move(Vector3.right);
-            }
-
-        }
-        else
-        {
-            speed = 8f;
-            gravity = -20f;
-            jumpForce = 10f;
         }
 
         //Prueba
