@@ -486,13 +486,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1205989236}
   speed: 8
-  jumpForce: 5
-  gravity: -10
+  jumpForce: 10
+  gravity: -20
   NT: 0
   resta: 1
   moving: 1
   hability: 1
-  isGrounded: 0
+  isGrounded: 1
   ableToMakeDoubleJump: 0
   model: {fileID: 1205989238}
   groundCheck: {fileID: 1170503676}

@@ -27,6 +27,7 @@ public class PController : MonoBehaviour
         Idle,
         Walk,
         Jump,
+        DoubleJump,
         Caida,
         Landing,
         WaterStream
@@ -47,6 +48,7 @@ public class PController : MonoBehaviour
     {
         Walk();
         Jump();
+        DoubleJump();
         //Prueba
         if (TeoState.vidas <= 0 || TeoState.resp == 1)
         {
@@ -63,6 +65,9 @@ public class PController : MonoBehaviour
                 break;
             case TeoStates.Jump:
                 Jump();
+                break;
+            case TeoStates.DoubleJump:
+                DoubleJump();
                 break;
             case TeoStates.Caida:
                 Caida();
@@ -109,6 +114,10 @@ public class PController : MonoBehaviour
             case TeoStates.Jump:
                 animator.SetBool("isGrounded", false);
                 break;
+            case TeoStates.DoubleJump:
+                animator.SetBool("isGrounded", false);
+                animator.SetBool("doubleJump", false);
+                break;
             case TeoStates.Caida:
                 
                 break;
@@ -126,13 +135,21 @@ public class PController : MonoBehaviour
     void Idle()
     {
         ChangeState(TeoStates.Idle);
+        if(isGrounded==false)
+        {
+            ChangeState(TeoStates.Jump);
+            if(ableToMakeDoubleJump==false)
+            {
+                ChangeState(TeoStates.DoubleJump);
+            }
+        }
     }
 
     void Walk()
     {
         
         //Slow
-        if (NT > 0)
+       /* if (NT > 0)
         {
             speed = 5;
             NT -= resta * Time.deltaTime;
@@ -147,13 +164,17 @@ public class PController : MonoBehaviour
             TeoState.nslow = 0;
             TeoState.SavePrefs();
         }
-
+       */
         //Move
         if (moving == true)
         {
             float hInput = Input.GetAxis("Horizontal");
             direction.x = hInput * speed;
             moveDetected = false;
+            if (moveDetected== false)
+            {
+                ChangeState(TeoStates.Idle);
+            }
 
             //Flip
             if (hInput != 0)
@@ -165,13 +186,17 @@ public class PController : MonoBehaviour
                 {
                     ChangeState(TeoStates.Walk);
                 }
-                else
-                {
-                    ChangeState(TeoStates.Idle);
-                }
             }
 
             controller.Move(direction * Time.deltaTime);
+            if (isGrounded == false)
+            {
+                ChangeState(TeoStates.Jump);
+                /*if (ableToMakeDoubleJump == false)
+                {
+                    ChangeState(TeoStates.DoubleJump);
+                }*/
+            }
         }
     }
 
@@ -191,7 +216,11 @@ public class PController : MonoBehaviour
                 }
             }
         }
+             
+    }
 
+    void DoubleJump()
+    {
         //DoubleJump
         if (hability == true)
         {
@@ -214,6 +243,7 @@ public class PController : MonoBehaviour
                     ableToMakeDoubleJump = false;
                 }
             }
+            animator.SetBool("doubleJump", true);
         }
     }
 
