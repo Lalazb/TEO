@@ -17,10 +17,11 @@ public class PController : MonoBehaviour
     public Transform model;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    public bool moveDetected;
+    
 
     private Vector3 direction;
     Animator animator;
+    private bool moveDetected;
 
     enum TeoStates
     {
@@ -48,7 +49,7 @@ public class PController : MonoBehaviour
     {
         Walk();
         Jump();
-        DoubleJump();
+        //DoubleJump();
         //Prueba
         if (TeoState.vidas <= 0 || TeoState.resp == 1)
         {
@@ -147,9 +148,8 @@ public class PController : MonoBehaviour
 
     void Walk()
     {
-        
         //Slow
-       /* if (NT > 0)
+        if (NT > 0)
         {
             speed = 5;
             NT -= resta * Time.deltaTime;
@@ -164,7 +164,7 @@ public class PController : MonoBehaviour
             TeoState.nslow = 0;
             TeoState.SavePrefs();
         }
-       */
+       
         //Move
         if (moving == true)
         {
@@ -185,18 +185,19 @@ public class PController : MonoBehaviour
                 if(moveDetected==true)
                 {
                     ChangeState(TeoStates.Walk);
+                    if (isGrounded == false)
+                    {
+                        ChangeState(TeoStates.Jump);
+                        if (ableToMakeDoubleJump == false)
+                        {
+                            ChangeState(TeoStates.DoubleJump);
+                        }
+                    }
                 }
             }
 
             controller.Move(direction * Time.deltaTime);
-            if (isGrounded == false)
-            {
-                ChangeState(TeoStates.Jump);
-                /*if (ableToMakeDoubleJump == false)
-                {
-                    ChangeState(TeoStates.DoubleJump);
-                }*/
-            }
+            
         }
     }
 
@@ -216,14 +217,18 @@ public class PController : MonoBehaviour
                 }
             }
         }
-             
+
+        if(hability==true)
+        {
+            DoubleJump();
+        }
     }
 
     void DoubleJump()
     {
         //DoubleJump
-        if (hability == true)
-        {
+       // if (hability == true)
+        //{
             CheckRoof();
             isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
             direction.y += gravity * Time.deltaTime;
@@ -244,7 +249,7 @@ public class PController : MonoBehaviour
                 }
             }
             animator.SetBool("doubleJump", true);
-        }
+        //}
     }
 
     void Caida()
