@@ -428,7 +428,7 @@ GameObject:
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1170503676
 Transform:
   m_ObjectHideFlags: 0
@@ -460,13 +460,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.39
-  m_Radius: 0.5
+  m_Height: 0
+  m_Radius: 0.84
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.69, z: 0}
+  m_Center: {x: 0, y: 0.89, z: -0.33}
 --- !u!4 &1205989238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e987b7fc4b25dad45bd212bfa18af5c0, type: 3}
@@ -670,7 +670,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: e987b7fc4b25dad45bd212bfa18af5c0, type: 3}
       propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 9000000, guid: 70ff0fe51ebd3cb468745e9a11b6f792, type: 3}
+      objectReference: {fileID: 9000000, guid: e987b7fc4b25dad45bd212bfa18af5c0, type: 3}
     - target: {fileID: 5866666021909216657, guid: e987b7fc4b25dad45bd212bfa18af5c0, type: 3}
       propertyPath: m_Enabled
       value: 1

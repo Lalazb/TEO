@@ -49,7 +49,6 @@ public class PController : MonoBehaviour
     {
         Walk();
         Jump();
-        //DoubleJump();
         //Prueba
         if (TeoState.vidas <= 0 || TeoState.resp == 1)
         {
@@ -70,15 +69,7 @@ public class PController : MonoBehaviour
             case TeoStates.DoubleJump:
                 DoubleJump();
                 break;
-            case TeoStates.Caida:
-                Caida();
-                break;
-            case TeoStates.Landing:
-                Landing();
-                break;
-            case TeoStates.WaterStream:
-                WaterStream();
-                break;
+            
         }
 
     }
@@ -117,10 +108,14 @@ public class PController : MonoBehaviour
                 break;
             case TeoStates.DoubleJump:
                 animator.SetBool("isGrounded", false);
-                animator.SetBool("doubleJump", false);
+                //animator.SetBool("doubleJump", false);
                 break;
             case TeoStates.Caida:
-                
+                if(isGrounded)
+                {
+                    animator.SetBool("isGrounded", true);
+                    animator.SetBool("doubleJump", true);
+                }
                 break;
             case TeoStates.Landing:
                 animator.SetBool("isGrounded", true);
@@ -139,10 +134,6 @@ public class PController : MonoBehaviour
         if(isGrounded==false)
         {
             ChangeState(TeoStates.Jump);
-            if(ableToMakeDoubleJump==false)
-            {
-                ChangeState(TeoStates.DoubleJump);
-            }
         }
     }
 
@@ -188,10 +179,10 @@ public class PController : MonoBehaviour
                     if (isGrounded == false)
                     {
                         ChangeState(TeoStates.Jump);
-                        if (ableToMakeDoubleJump == false)
+                       /* if (ableToMakeDoubleJump == false)
                         {
                             ChangeState(TeoStates.DoubleJump);
-                        }
+                        }*/
                     }
                 }
             }
@@ -220,15 +211,18 @@ public class PController : MonoBehaviour
 
         if(hability==true)
         {
-            DoubleJump();
+            //DoubleJump();
+            ChangeState(TeoStates.DoubleJump);
+        }
+        else
+        {
+            ChangeState(TeoStates.Caida);
         }
     }
 
     void DoubleJump()
     {
         //DoubleJump
-       // if (hability == true)
-        //{
             CheckRoof();
             isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
             direction.y += gravity * Time.deltaTime;
@@ -242,29 +236,14 @@ public class PController : MonoBehaviour
             }
             else
             {
-                if (ableToMakeDoubleJump & Input.GetButtonDown("Jump"))
+                if (ableToMakeDoubleJump && Input.GetButtonDown("Jump"))
                 {
+                    animator.SetBool("doubleJump", false);
                     direction.y = jumpForce;
                     ableToMakeDoubleJump = false;
                 }
             }
-            animator.SetBool("doubleJump", true);
-        //}
-    }
-
-    void Caida()
-    {
-
-    }
-
-    void Landing()
-    {
-
-    }
-
-    void WaterStream()
-    {
-
+        ChangeState(TeoStates.Caida);
     }
 
 }
