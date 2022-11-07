@@ -22,6 +22,7 @@ public class PController : MonoBehaviour
     private Vector3 direction;
     Animator animator;
     private bool moveDetected;
+    private Gun waterBomb;
 
     enum TeoStates
     {
@@ -31,7 +32,9 @@ public class PController : MonoBehaviour
         DoubleJump,
         Caida,
         Landing,
-        WaterStream
+        WaterStreamIn,
+        WaterStreamLoop,
+        WaterStreamOut
     };
     TeoStates state;
 
@@ -42,6 +45,7 @@ public class PController : MonoBehaviour
         moving = true;
         animator = GetComponent<Animator>();
         ChangeState(TeoStates.Idle);
+        waterBomb = FindObjectOfType<Gun>();
     }
 
     // Update is called once per frame
@@ -49,6 +53,7 @@ public class PController : MonoBehaviour
     {
         Walk();
         Jump();
+
         //Prueba
         if (TeoState.vidas <= 0 || TeoState.resp == 1)
         {
@@ -69,7 +74,24 @@ public class PController : MonoBehaviour
             case TeoStates.DoubleJump:
                 DoubleJump();
                 break;
-            
+            case TeoStates.WaterStreamIn:
+                WaterStreamIn();
+                break;
+            case TeoStates.WaterStreamOut:
+                WaterStreamOut();
+                break;
+        }
+
+        if (waterBomb.enabled == true)
+        {
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                ChangeState(TeoStates.WaterStreamIn);
+            }
+            if (Input.GetKeyUp(KeyCode.J))
+            {
+                ChangeState(TeoStates.WaterStreamOut);
+            }
         }
 
     }
@@ -120,8 +142,11 @@ public class PController : MonoBehaviour
             case TeoStates.Landing:
                 animator.SetBool("isGrounded", true);
                 break;
-            case TeoStates.WaterStream:
-                animator.ResetTrigger("waterBomb");
+            case TeoStates.WaterStreamIn:
+                animator.SetBool("waterBomb",true);
+                break;
+            case TeoStates.WaterStreamOut:
+                animator.SetBool("waterBomb", false);
                 break;
         }
         state = newState;
@@ -246,4 +271,13 @@ public class PController : MonoBehaviour
         ChangeState(TeoStates.Caida);
     }
 
+    void WaterStreamIn()
+    {
+
+    }
+
+    void WaterStreamOut()
+    {
+
+    }
 }
