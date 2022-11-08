@@ -17,7 +17,7 @@ public class WallBreak : MonoBehaviour
     float distDirZ;
     Transform Pos;
 
-    float impactZone = 8f;
+    float impactZone = 20f;
 
 
 
