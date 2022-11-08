@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlatMove
+  - DoubleJump
+  - hcheck
+  - Medusa
   layers:
   - Default
   - TransparentFX
@@ -13,9 +16,9 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
+  - Placa1
+  - Placa2
+  - Placa3
   - 
   - 
   - 
