@@ -80,12 +80,14 @@
     <Compile Include="Assets\Scripts\NextScene1.cs" />
     <Compile Include="Assets\Scripts\VidaRespawn\TeoPJ.cs" />
     <Compile Include="Assets\Scripts\Buttons.cs" />
+    <Compile Include="Assets\Scripts\PlacaScripts\Empuje.cs" />
     <Compile Include="Assets\Scripts\VidaRespawn\Controlelr.cs" />
     <Compile Include="Assets\Scripts\Platforms\PlatDet.cs" />
     <Compile Include="Assets\Scripts\Enemigos\MoveMedusas.cs" />
     <Compile Include="Assets\Scripts\Obsolete\Water.cs" />
     <Compile Include="Assets\Scripts\NadoFinal.cs" />
     <Compile Include="Assets\Scripts\Enemigos\Shoot_Medusa.cs" />
+    <Compile Include="Assets\Scripts\SpellCooldown.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\NextScene.cs" />
     <Compile Include="Assets\Scripts\CTRL_Carpa.cs" />
@@ -101,7 +103,11 @@
     <Compile Include="Assets\Scripts\Obsolete\Movement1.cs" />
     <Compile Include="Assets\Scripts\Platforms\MovePlatforms.cs" />
     <Compile Include="Assets\Scripts\Hechizo de fuerza\Reducción de daño\DamageResistances.cs" />
+    <Compile Include="Assets\Scripts\PlacaScripts\plataforma.cs" />
+    <Compile Include="Assets\Scripts\PlacaScripts\ActivarPlaca.cs" />
     <Compile Include="Assets\Scripts\Bomba de agua\Projectile.cs" />
+    <Compile Include="Assets\Scripts\Rocas rompibles\RockDest.cs" />
+    <Compile Include="Assets\Scripts\Rocas rompibles\WallBreak.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -783,6 +789,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
       <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>

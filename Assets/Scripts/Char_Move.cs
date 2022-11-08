@@ -16,6 +16,6 @@ public class Char_Move : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float factor = speed * Time.deltaTime;
-        transform.Translate(horizontal * factor,0f, 0f);
+        transform.Translate(horizontal * factor, 0f,0f);
     }
 }
