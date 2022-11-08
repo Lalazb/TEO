@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{cea01bfc-f9f1-41de-a700-e402c2357a30}">
+		<property name="assetPath">
+			<value>Kehlos/Dialogues/Keh_los_ToadKingdom_Dialogue_04_Versión02.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>5.0709583333333335</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b6a47724-6aa5-473f-9b1e-f1422f51021d}</destination>
+		</relationship>
+	</object>
+</objects>

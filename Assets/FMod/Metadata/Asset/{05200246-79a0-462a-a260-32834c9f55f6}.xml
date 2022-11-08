@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{05200246-79a0-462a-a260-32834c9f55f6}">
+		<property name="assetPath">
+			<value>Teo/Acciones/Jump/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b6a47724-6aa5-473f-9b1e-f1422f51021d}</destination>
+		</relationship>
+	</object>
+</objects>

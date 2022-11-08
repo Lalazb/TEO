@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{bf54584a-0709-45e6-a9d0-a545ac5cde2e}">
+		<property name="name">
+			<value>Pasos</value>
+		</property>
+		<relationship name="folder">
+			<destination>{cf4ada65-3486-441f-8453-72e96c889fff}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{95135f2b-6379-444e-8023-899734c15979}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{95135f2b-6379-444e-8023-899734c15979}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>isIdle</value>
+			<value>isWalking</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

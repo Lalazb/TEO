@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{bb6b7e97-7446-4758-a1b6-b3181324d6a6}">
+		<property name="assetPath">
+			<value>Teo/Teo_Grotto_doubleJump.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.26</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b6a47724-6aa5-473f-9b1e-f1422f51021d}</destination>
+		</relationship>
+	</object>
+</objects>
