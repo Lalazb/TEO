@@ -135,8 +135,8 @@ public class PController : MonoBehaviour
     private void CheckRoof()
     {
         RaycastHit hitInfo = new RaycastHit();
-        Debug.DrawRay(transform.position, Vector3.up * 1.1f, Color.red);
-        if (Physics.Raycast(transform.position, Vector3.up, out hitInfo, 1.1f, groundLayer))
+        Debug.DrawRay(transform.position, Vector3.up * 0.8f, Color.red);
+        if (Physics.Raycast(transform.position, Vector3.up, out hitInfo, 0.8f, groundLayer))
         {
             gravity = -350f;
         }
