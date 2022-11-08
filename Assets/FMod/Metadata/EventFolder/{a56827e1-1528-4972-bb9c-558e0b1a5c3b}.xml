@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EventFolder" id="{a56827e1-1528-4972-bb9c-558e0b1a5c3b}">
+		<property name="name">
+			<value>Carpa</value>
+		</property>
+		<relationship name="folder">
+			<destination>{2716083a-f43d-4a55-b7f4-b24e4ce2baae}</destination>
+		</relationship>
+	</object>
+</objects>
