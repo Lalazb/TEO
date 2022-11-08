@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{4e5a6e4d-5893-4e95-83bb-241d8acbae69}">
+		<property name="assetPath">
+			<value>Alba/Actions/Alba_Village_cry_05.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.78974999999999995</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{95a26358-3aed-483f-9272-3ad42ec0a71b}</destination>
+		</relationship>
+	</object>
+</objects>

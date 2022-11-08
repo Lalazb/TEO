@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{7e861b6a-ad21-4e4e-bc55-a7716a138e95}">
+		<property name="assetPath">
+			<value>Teo/Habilidades/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{95a26358-3aed-483f-9272-3ad42ec0a71b}</destination>
+		</relationship>
+	</object>
+</objects>

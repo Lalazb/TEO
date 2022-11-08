@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EventFolder" id="{c3b0a2f0-ccc3-463a-8625-db088be9ea1d}">
+		<property name="name">
+			<value>Gameplay_Grutas</value>
+		</property>
+		<relationship name="folder">
+			<destination>{89379890-0683-4279-a8a4-ad10b19a4aff}</destination>
+		</relationship>
+	</object>
+</objects>

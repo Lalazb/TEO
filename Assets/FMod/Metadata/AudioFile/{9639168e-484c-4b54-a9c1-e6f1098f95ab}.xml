@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9639168e-484c-4b54-a9c1-e6f1098f95ab}">
+		<property name="assetPath">
+			<value>Alba/Dialogues/Alba_Village_Dialogue_02.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>6.1870416666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{95a26358-3aed-483f-9272-3ad42ec0a71b}</destination>
+		</relationship>
+	</object>
+</objects>

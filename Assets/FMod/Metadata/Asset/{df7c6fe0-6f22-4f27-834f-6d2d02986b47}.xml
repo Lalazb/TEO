@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{df7c6fe0-6f22-4f27-834f-6d2d02986b47}">
+		<property name="assetPath">
+			<value>Alba/Dialogues/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{95a26358-3aed-483f-9272-3ad42ec0a71b}</destination>
+		</relationship>
+	</object>
+</objects>
