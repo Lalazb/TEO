@@ -141,10 +141,10 @@
 	<object class="MixerBusFader" id="{191893c9-f94f-4c03-a70d-d7dab8513032}" />
 	<object class="ParameterCondition" id="{f15091ec-e890-45c0-92ab-9b032f3f1898}">
 		<property name="minimum">
-			<value>1</value>
+			<value>1.5</value>
 		</property>
 		<property name="maximum">
-			<value>1</value>
+			<value>1.5</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{95135f2b-6379-444e-8023-899734c15979}</destination>
@@ -172,10 +172,10 @@
 	</object>
 	<object class="ParameterCondition" id="{46574056-c866-4571-a1dc-f82f0ae483f1}">
 		<property name="minimum">
-			<value>1</value>
+			<value>1.5</value>
 		</property>
 		<property name="maximum">
-			<value>1</value>
+			<value>1.5</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{95135f2b-6379-444e-8023-899734c15979}</destination>
