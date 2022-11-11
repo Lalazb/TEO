@@ -25,7 +25,7 @@ public class Gun : MonoBehaviour
         if (Input.GetKey(KeyCode.J) && chargeTime < 2 && cooldown) 
         {
             isCharging = true;
-            if(isCharging == true)
+            if(isCharging == true) //bomba gde
             {
                 chargeTime += Time.deltaTime * chargeSpeed;
                 GameObject newgrowth = Instantiate(growth, firepoint.position, firepoint.rotation);
@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour
             //cooldown = false;
             //StartCoroutine(TimeOut());
         }
-        if (Input.GetKeyDown(KeyCode.J) && cooldown)
+        if (Input.GetKeyDown(KeyCode.J) && cooldown)//bomba ch
         {
             Instantiate(projectile, firepoint.position, firepoint.rotation);
             chargeTime = 0;

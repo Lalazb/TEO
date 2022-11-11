@@ -32,7 +32,7 @@ public class Shield : MonoBehaviour
     {
         yield return new WaitForSeconds(15);
         playerShield.SetActive(false);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(15);
         Cooldown = true;
     }
 }

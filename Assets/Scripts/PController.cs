@@ -23,6 +23,8 @@ public class PController : MonoBehaviour
 
     private Vector3 direction;
 
+    //SpellCooldownJump.
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +85,7 @@ public class PController : MonoBehaviour
         if (hability == true)
         {
             CheckRoof();
+            //spellcooldownjump.cdjbool;
             isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
             direction.y += gravity * Time.deltaTime;
             if (isGrounded)
@@ -135,8 +138,8 @@ public class PController : MonoBehaviour
     private void CheckRoof()
     {
         RaycastHit hitInfo = new RaycastHit();
-        Debug.DrawRay(transform.position, Vector3.up * 1.1f, Color.red);
-        if (Physics.Raycast(transform.position, Vector3.up, out hitInfo, 1.1f, groundLayer))
+        Debug.DrawRay(transform.position, Vector3.up * 0.8f, Color.red);
+        if (Physics.Raycast(transform.position, Vector3.up, out hitInfo, 0.8f, groundLayer))
         {
             gravity = -350f;
         }
